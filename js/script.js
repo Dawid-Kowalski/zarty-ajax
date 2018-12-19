@@ -5,10 +5,11 @@ let resultParagraph = document.getElementById("joke-text");
 
 function getJoke() {
 	let request = new XMLHttpRequest();
-	request.open("GET", jokeUrl);
+	request.open("POST", jokeUrl);
 	request.addEventListener("load", function() {
 		let response = JSON.parse(request.response);
-		resultParagraph.innerHTML = response.value.joke;
+		resultParagraph.innerHTML = response.value.id + ". ";
+		resultParagraph.innerHTML += response.value.joke;
 	});
 	request.send();
 }
